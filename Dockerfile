@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y libmemcached-dev libfreetype6-dev \
     && docker-php-ext-enable memcached \
     && docker-php-ext-enable memcache
 
-RUN {
+RUN { \
 	echo 'max_input_time = 60'; \
 	echo 'max_execution_time = 120'; \
 	echo 'upload_max_filesize = 64M'; \
