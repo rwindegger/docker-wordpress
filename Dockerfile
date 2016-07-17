@@ -1,13 +1,16 @@
 FROM wordpress:fpm
 
 RUN apt-get update && apt-get install -y libmemcached-dev libfreetype6-dev \
+    libmagickwand-dev --no-install-recommends \
     && pecl install memcached \
     && pecl install memcache \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd \
+    && docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-enable gd \
     && docker-php-ext-enable memcached \
-    && docker-php-ext-enable memcache
+    && docker-php-ext-enable memcache \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
+    && rm -r /var/lib/apt/lists/*
 
 RUN { \
 	echo 'max_input_time = 60'; \
