@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y libmemcached-dev libfreetype6-dev \
     && pecl install memcache \
     && docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-enable gd \
+    && docker-php-ext-enable mbstring \
     && docker-php-ext-enable memcached \
     && docker-php-ext-enable memcache \
     && pecl install imagick \
