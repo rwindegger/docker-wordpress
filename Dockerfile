@@ -3,6 +3,8 @@ FROM php:fpm
 # install the PHP extensions we need
 RUN apt-get update \
 	&& apt-get install -y \
+		mysql-client \
+		libmysqlclient-dev \
 		libpng12-dev \
 		libjpeg-dev \
 		libmemcached-dev \
