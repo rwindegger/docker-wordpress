@@ -11,7 +11,7 @@ RUN apt-get update \
     		--no-install-recommends \
     	&& rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd mysqli opcache memcached memcache \
+	&& docker-php-ext-install gd mysqli opcache memcache \
 	&& docker-php-ext-enable gd \
 	&& docker-php-ext-enable opcache \
 	&& docker-php-ext-enable memcached \
