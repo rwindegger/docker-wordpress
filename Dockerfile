@@ -10,6 +10,7 @@ RUN apt-get update \
 		libmemcached-dev \
 		libfreetype6-dev \
     		libmagickwand-dev \
+		libxml2-dev \
     		--no-install-recommends \
     	&& rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
@@ -18,7 +19,6 @@ RUN apt-get update \
 	&& docker-php-ext-enable opcache \
 	&& docker-php-ext-enable memcached \
 	&& docker-php-ext-enable memcache \
-	&& docker-php-ext-enable soap \
 	&& pecl install imagick \
 	&& docker-php-ext-enable imagick \
 
