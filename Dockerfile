@@ -18,7 +18,7 @@ RUN apt-get update \
 	&& docker-php-ext-enable opcache \
 	&& docker-php-ext-enable memcached \
 	&& docker-php-ext-enable memcache \
-	&& docker-php-ext-enable soat \
+	&& docker-php-ext-enable soap \
 	&& pecl install imagick \
 	&& docker-php-ext-enable imagick \
 
