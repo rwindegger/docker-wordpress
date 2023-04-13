@@ -3,9 +3,9 @@ FROM php:fpm
 # install the PHP extensions we need
 RUN apt-get update \
 	&& apt-get install -y \
-		mysql-client \
-		libmysqlclient-dev \
-		libpng12-dev \
+		default-mysql-client \
+		default-libmysqlclient-dev \
+		libpng-dev \
 		libjpeg-dev \
 		libmemcached-dev \
 		libfreetype6-dev \
@@ -13,14 +13,12 @@ RUN apt-get update \
 		libxml2-dev \
     		--no-install-recommends \
     	&& rm -rf /var/lib/apt/lists/* \
-	&& docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
+	&& docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
 	&& docker-php-ext-install gd mysqli opcache soap \
 	&& docker-php-ext-enable gd \
 	&& docker-php-ext-enable opcache \
-	&& docker-php-ext-enable memcached \
-	&& docker-php-ext-enable memcache \
 	&& pecl install imagick \
-	&& docker-php-ext-enable imagick \
+	&& docker-php-ext-enable imagick
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
